@@ -11,140 +11,224 @@
 
     <div id="tracker-app">
 
-        <!-- PART 1: HEADER SECTION CARD -->
+        <!-- PART 1: HEADER SECTION (Clean & Semantic) -->
         <header class="app-header">
-            <h1>SpendWise</h1>
-            <p class="app-subtitle">Personal Budget & Expense Tracker</p>
+            <div class="header-titles">
+                <h1>SpendWise</h1>
+                <p class="app-subtitle">Personal Budget & Expense Tracker</p>
+            </div>
         </header>
 
-        <!-- INTERACTIVE COLLAPSIBLE INFORMATION BOX -->
-        <section class="tips-container">
-            <details>
-                <summary>How to use this tracker</summary>
-                <p>Fill out the form below with your expense details, select a category, and click "Add Transaction". Your logged balance history is displayed in the table to keep your finances on track!</p>
-            </details>
-        </section>
+        <!-- ADDED PER TEACHER FEEDBACK: REAL SEMANTIC SIDEBAR NAVIGATION -->
+        <aside class="app-sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">📁 Dashboard</a>
+                <a href="#" class="nav-item">📊 Analytics</a>
+                <a href="#" class="nav-item">💰 Budgets</a>
+                <a href="#" class="nav-item">📜 Ledger</a>
+                <a href="#" class="nav-item">⚙️ Settings</a>
+            </nav>
+        </aside>
 
-        <!-- DASHBOARD DISPLAY SECTION CARD -->
-        <section class="dashboard-container">
-            <div class="balance-block">
-                <h2>Your Balance</h2>
-                <h3 id="current-balance">$0.00</h3>
-            </div>
-            
-            <div class="summary-cards">
-                <div class="card income-card">
-                    <h4>Income</h4>
-                    <p id="money-plus" class="money plus">+$0.00</p>
-                </div>
-                <div class="card expense-card">
-                    <h4>Expenses</h4>
-                    <p id="money-minus" class="money minus">-$0.00</p>
-                </div>
-            </div>
-        </section>
+        <!-- MAIN MAIN CONTENT VIEW SPACE -->
+        <main class="app-main">
 
-        <!-- PART 3: EXPENSE TABLE LEDGER CARD -->
-        <section class="history-container">
-            <h3>Your Expenses</h3>
-            <table class="expense-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Amount</th>
-                        <th>Category</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Freelance Design</td>
-                        <td class="amount-income">+$400.00</td>
-                        <td>Salary/Income</td>
-                        <td>2026-09-10</td>
-                    </tr>
-                    <tr>
-                        <td>Groceries</td>
-                        <td class="amount-expense">-$65.00</td>
-                        <td>Groceries</td>
-                        <td>2026-09-11</td>
-                    </tr>
-                    <tr>
-                        <td>Apartment Rent</td>
-                        <td class="amount-expense">-$500.00</td>
-                        <td>Rent</td>
-                        <td>2026-09-01</td>
-                    </tr>
-                    <tr>
-                        <td>Movie Ticket</td>
-                        <td class="amount-expense">-$15.00</td>
-                        <td>Entertainment</td>
-                        <td>2026-09-12</td>
-                    </tr>
-                    <tr>
-                        <td>Internet Bill</td>
-                        <td class="amount-expense">-$40.00</td>
-                        <td>Other</td>
-                        <td>2026-09-05</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+            <!-- INTERACTIVE COLLAPSIBLE INFORMATION BOX -->
+            <section class="tips-container">
+                <details>
+                    <summary>How to use this tracker</summary>
+                    <p>Fill out the form below with your expense details, select a category, and click "Add Transaction". Your logged balance history is displayed in the table to keep your finances on track!</p>
+                </details>
+            </section>
 
-        <!-- PART 2: THE ADD EXPENSE FORM CARD -->
-        <section class="form-container">
-            <h3>Add New Transaction</h3>
-            <form id="transaction-form">
-                
-                <div class="form-control">
-                    <label for="text-input">Expense Name</label>
-                    <input type="text" id="text-input" placeholder="e.g., Grocery Shopping" required />
+            <!-- DASHBOARD DISPLAY SECTION CARD -->
+            <section class="dashboard-container">
+                <div class="balance-block">
+                    <h2>Your Balance</h2>
+                    <h3 id="current-balance">$0.00</h3>
                 </div>
                 
-                <div class="form-control">
-                    <label for="amount-input">Amount</label>
-                    <input type="number" step="0.01" id="amount-input" placeholder="e.g., -20.00" required />
+                <div class="summary-cards">
+                    <div class="card income-card">
+                        <h4>Income</h4>
+                        <p id="money-plus" class="money plus">+$0.00</p>
+                    </div>
+                    <div class="card expense-card">
+                        <h4>Expenses</h4>
+                        <p id="money-minus" class="money minus">-$0.00</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ADDED PER TEACHER FEEDBACK: REAL 6 CATEGORY BUDGET TRACKING CARDS GRID -->
+            <h3 class="section-title">Budget Categories Breakdown</h3>
+            <section class="category-cards-grid">
+                
+                <!-- Card 1 -->
+                <div class="finance-card" tabindex="0">
+                    <div class="card-header-flex">
+                        <h4>Food & Dining</h4>
+                        <span class="card-icon">🍔</span>
+                    </div>
+                    <div class="card-body-flex">
+                        <span class="spent">$65.00</span>
+                        <span class="limit">of $200.00 budget</span>
+                    </div>
                 </div>
 
-                <div class="form-control">
-                    <label for="category-input">Category</label>
-                    <select id="category-input" required>
-                        <option value="">-- Select a Category --</option>
-                        <option value="groceries">Groceries</option>
-                        <option value="utilities">Utilities</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="salary">Salary/Income</option>
-                        <option value="other">Other</option>
-                    </select>
+                <!-- Card 2 -->
+                <div class="finance-card" tabindex="0">
+                    <div class="card-header-flex">
+                        <h4>Transport</h4>
+                        <span class="card-icon">🚗</span>
+                    </div>
+                    <div class="card-body-flex">
+                        <span class="spent">$0.00</span>
+                        <span class="limit">of $100.00 budget</span>
+                    </div>
                 </div>
 
-                <div class="form-control">
-                    <label for="date-input">Date</label>
-                    <input type="date" id="date-input" required />
+                <!-- Card 3 -->
+                <div class="finance-card" tabindex="0">
+                    <div class="card-header-flex">
+                        <h4>Rent & Housing</h4>
+                        <span class="card-icon">🏠</span>
+                    </div>
+                    <div class="card-body-flex">
+                        <span class="spent">$500.00</span>
+                        <span class="limit">of $500.00 budget</span>
+                    </div>
                 </div>
 
-                <button type="button" class="submit-btn" id="add-btn">Add Transaction</button>
-            </form>
-        </section>
+                <!-- Card 4 -->
+                <div class="finance-card" tabindex="0">
+                    <div class="card-header-flex">
+                        <h4>Entertainment</h4>
+                        <span class="card-icon">🎬</span>
+                    </div>
+                    <div class="card-body-flex">
+                        <span class="spent">$15.00</span>
+                        <span class="limit">of $80.00 budget</span>
+                    </div>
+                </div>
 
-        <!-- FINANCIAL SPOTLIGHT CARD -->
-        <section class="media-container">
-            <h3>Financial Literacy Spotlight</h3>
-            <div class="video-frame">
-                <iframe 
-                    width="100%" 
-                    height="315" 
-                    src="https://youtube.com" 
-                    title="5 Budgeting Tips for Beginners" 
-                    frameborder="0"
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </section>
+                <!-- Card 5 -->
+                <div class="finance-card" tabindex="0">
+                    <div class="card-header-flex">
+                        <h4>Savings Goal</h4>
+                        <span class="card-icon">📈</span>
+                    </div>
+                    <div class="card-body-flex">
+                        <span class="spent">$400.00</span>
+                        <span class="limit">Target: $1,000.00</span>
+                    </div>
+                </div>
 
-    </div>
+                <!-- Card 6 -->
+                <div class="finance-card" tabindex="0">
+                    <div class="card-header-flex">
+                        <h4>Utilities & Bills</h4>
+                        <span class="card-icon">⚡</span>
+                    </div>
+                    <div class="card-body-flex">
+                        <span class="spent">$40.00</span>
+                        <span class="limit">of $120.00 budget</span>
+                    </div>
+                </div>
 
-    <!-- Links your script file -->
-    <script src="script.js"></script>
-</body>
-</html>
+            </section>
+
+            <!-- PART 3: EXPENSE TABLE LEDGER CARD (Left Intact from Week 3) -->
+            <section class="history-container">
+                <h3>Your Expenses History</h3>
+                <table class="expense-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Freelance Design</td>
+                            <td class="amount-income">+$400.00</td>
+                            <td>Salary/Income</td>
+                            <td>2026-09-10</td>
+                        </tr>
+                        <tr>
+                            <td>Groceries</td>
+                            <td class="amount-expense">-$65.00</td>
+                            <td>Groceries</td>
+                            <td>2026-09-11</td>
+                        </tr>
+                        <tr>
+                            <td>Apartment Rent</td>
+                            <td class="amount-expense">-$500.00</td>
+                            <td>Rent</td>
+                            <td>2026-09-01</td>
+                        </tr>
+                        <tr>
+                            <td>Movie Ticket</td>
+                            <td class="amount-expense">-$15.00</td>
+                            <td>Entertainment</td>
+                            <td>2026-09-12</td>
+                        </tr>
+                        <tr>
+                            <td>Internet Bill</td>
+                            <td class="amount-expense">-$40.00</td>
+                            <td>Other</td>
+                            <td>2026-09-05</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- PART 2: THE ADD EXPENSE FORM CARD (Left Intact from Week 2) -->
+            <section class="form-container">
+                <h3>Add New Transaction</h3>
+                <form id="transaction-form">
+                    
+                    <div class="form-control">
+                        <label for="text-input">Expense Name</label>
+                        <input type="text" id="text-input" placeholder="e.g., Grocery Shopping" required />
+                    </div>
+                    
+                    <div class="form-control">
+                        <label for="amount-input">Amount</label>
+                        <input type="number" step="0.01" id="amount-input" placeholder="e.g., -20.00" required />
+                    </div>
+
+                    <div class="form-control">
+                        <label for="category-input">Category</label>
+                        <select id="category-input" required>
+                            <option value="">-- Select a Category --</option>
+                            <option value="groceries">Groceries</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="salary">Salary/Income</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-control">
+                        <label for="date-input">Date</label>
+                        <input type="date" id="date-input" required />
+                    </div>
+
+                    <button type="button" class="submit-btn" id="add-btn">Add Transaction</button>
+                </form>
+            </section>
+
+            <!-- FINANCIAL SPOTLIGHT CARD -->
+            <section class="media-container">
+                <h3>Financial Literacy Spotlight</h3>
+                <div class="video-frame">
+                    <iframe 
+                        width="100%" 
+                        height="315" 
+                        src="https://youtube.com" 
+                        title="5 Budgeting Tips for Beginners" 
+                        frameborder="0"
+                        allowfullscreen>

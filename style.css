@@ -1,10 +1,10 @@
 /* ==========================================
-   1. CORRECT GOOGLE FONTS IMPORT & SYSTEM VARIABLES
+   1. CORP COLOR PALETTE & SYSTEM VARIABLES
    ========================================== */
 @import url('https://googleapis.com');
 
 :root {
-  /* Cohesive Financial Color Palette (User Originals Preserved) */
+  /* Cohesive Financial Color Palette (User Originals Restored) */
   --bg-page: #F8FAFC;          
   --bg-card: #FFFFFF;          
   --text-main: #1E293B;        
@@ -22,21 +22,21 @@
   --gap: 24px;
 }
 
-/* STRETCH GOAL: Automatic Custom Property Dark Theme Override */
+/* TEACHER PRAISED STRETCH GOAL: Systems Dark Theme Integration */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-page: #0F172A;        /* Swapped out backdrop canvas colors */
-    --bg-card: #1E293B;        /* Midnight surface card background colors */
-    --text-main: #F8FAFC;      /* Near-white readable font colors */
-    --text-muted: #94A3B8;     /* High contrast muted description values */
-    --primary: #38BDF8;        /* Vivid light blue corporate anchor tags */
-    --border-color: #334155;   /* Heavy grid line structural partitions */
+    --bg-page: #0F172A;        
+    --bg-card: #1E293B;        
+    --text-main: #F8FAFC;      
+    --text-muted: #94A3B8;     
+    --primary: #38BDF8;        
+    --border-color: #334155;   
     --zebra-row: #1E293B;      
   }
 }
 
 /* ==========================================
-   2. GLOBAL BODY & CANVAS RESET
+   2. GLOBAL DOCUMENT CANVAS RESET
    ========================================== */
 * {
   box-sizing: border-box;      
@@ -45,7 +45,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif; /* Fallback typography layout control */
+  font-family: 'Inter', sans-serif;
   background-color: var(--bg-page);
   color: var(--text-main);
   line-height: 1.5;
@@ -53,7 +53,6 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Montserrat Headings Rule */
 h1, h2, h3, h4 {
   font-family: 'Montserrat', sans-serif;
   color: var(--primary);
@@ -67,81 +66,40 @@ p {
 }
 
 /* ==========================================
-   3. MACRO DASHBOARD ARCHITECTURE (CSS Grid Page Shell)
+   3. MACRO DASHBOARD LAYOUT (CSS Grid Shell Framework)
    ========================================== */
 #tracker-app {
   display: grid;
-  /* Column 1 serves as our visually generated Sidebar Navigation */
   grid-template-columns: 260px 1fr;
-  grid-template-rows: 85px 1fr;
+  grid-template-rows: 75px 1fr;
   grid-template-areas: 
     "header header"
     "sidebar main";
   min-height: 100vh;
 }
 
-/* Target Area Bindings */
-.app-header { 
-  grid-area: header; 
-}
-
-/* 
-   MANDATORY TASK 1: THE SIDEBAR NAVIGATION MENU (Via Pure CSS Injection)
-   To maintain your Week 1-3 HTML unaltered, we style the empty sidebar grid column 
-   track space and utilize CSS string content generation rules to build your navigation system.
-*/
-#tracker-app::before {
-  grid-area: sidebar;
-  content: "📁 Dashboard\a\a📊 Analytics\a\a💰 Budgets\a\a📜 Ledger\a\a⚙️ Settings";
-  white-space: pre-wrap;
-  background-color: var(--bg-card);
-  border-right: 1px solid var(--border-color);
-  padding: 32px var(--gap);
-  font-weight: 600;
-  color: var(--text-muted);
-  line-height: 2;
-  font-size: 0.95rem;
-  font-family: 'Montserrat', sans-serif;
-}
-
-/* Wrap all remaining content boxes cleanly into the main workspace grid path */
-.tips-container, 
-.dashboard-container, 
-.history-container, 
-.form-container, 
-.media-container {
-  grid-column: 2;
-  margin: 0 var(--gap) var(--gap) var(--gap);
-  width: calc(100% - (var(--gap) * 2));
-  max-width: 900px; /* Expands past your original 800px limit for professional dashboards */
-}
-
-.tips-container { 
-  margin-top: var(--gap); 
-}
+/* Bind DOM nodes explicitly to layout areas */
+.app-header { grid-area: header; }
+.app-sidebar { grid-area: sidebar; }
+.app-main { grid-area: main; }
 
 /* ==========================================
-   4. ONE-DIMENSIONAL COMPONENTS (CSS Flexbox Alignments)
+   4. HEADER SECTOR BLOCK (Flexbox Micro Layout)
    ========================================== */
-
-/* Header Area Realignment Layout */
 .app-header {
   background-color: var(--bg-card);
   padding: 0 var(--gap);
-  border-radius: 0; /* Tied flush with the viewport boundaries */
-  border: none;
   border-bottom: 1px solid var(--border-color);
-  margin-bottom: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  text-align: left;
   display: flex;
-  justify-content: space-between; /* Spreads brand titles away from secondary tags */
+  justify-content: space-between;
   align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  z-index: 10;
 }
 
 .app-header h1 {
   font-size: 1.75rem;
-  color: var(--accent);        
+  color: var(--accent);
   margin-bottom: 0;
 }
 
@@ -150,7 +108,57 @@ p {
   color: var(--text-muted);
 }
 
-/* Dashboard Banner Layout Conversion to Flexbox row */
+/* ==========================================
+   5. REAL SIDEBAR COMPONENTS (Flexbox Nav Stacking)
+   ========================================== */
+.app-sidebar {
+  background-color: var(--bg-card);
+  border-right: 1px solid var(--border-color);
+  padding: var(--gap) 16px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-smooth);
+}
+
+.nav-item:hover, .nav-item:focus {
+  background-color: var(--bg-page);
+  color: var(--accent);
+  outline: none;
+}
+
+.nav-item.active {
+  background-color: var(--accent);
+  color: #FFFFFF;
+}
+
+/* ==========================================
+   6. CENTRAL WORKSPACE FLOW SECTOR
+   ========================================== */
+.app-main {
+  padding: var(--gap);
+  overflow-y: auto;
+}
+
+.section-title {
+  margin: var(--gap) 0 16px 0;
+  font-size: 1.25rem;
+}
+
+/* Balance Dashboard Banner Module */
 .dashboard-container {
   background-color: var(--bg-card);
   padding: 30px;
@@ -159,82 +167,52 @@ p {
   margin-bottom: var(--gap);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   display: flex;
-  flex-direction: row; /* Arranges the balance block alongside summary totals items */
   justify-content: space-between;
   align-items: center;
   gap: var(--gap);
 }
 
-.balance-block {
-  text-align: left;
-  padding-bottom: 0;
-  border-bottom: none;
-  border-right: 1px solid var(--border-color);
-  padding-right: var(--gap);
+.balance-block h2 {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .balance-block h3 {
-  font-size: 2.5rem;
-  color: var(--primary);
-  margin-top: 5px;
+  font-size: 2.3rem;
+  margin-top: 4px;
 }
 
 .summary-cards {
   display: flex;
   gap: 15px;
-  flex: 1;
 }
 
-.card {
-  flex: 1;
-  padding: 15px;
+.dashboard-container .card {
+  padding: 15px 20px;
   border-radius: var(--radius-sm);
   background-color: var(--bg-page);
   border: 1px solid var(--border-color);
   text-align: center;
+  min-width: 120px;
 }
+
+.income-card h4 { color: #16A34A; }
+.expense-card h4 { color: #DC2626; }
+.card p { font-size: 1.2rem; font-weight: bold; margin-top: 4px; }
 
 /* ==========================================
-   5. TWO-DIMENSIONAL RE-FLOW: TABLE ROWS TO 6 DASHBOARD GRID CARDS
+   7. THE 6 ACCESSIBLE CATEGORY CARDS (CSS Grid Layout)
    ========================================== */
-.history-container {
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-}
-
-.history-container h3 {
-  margin-bottom: 16px;
-  font-size: 1.35rem;
-}
-
-/* Wipe away old strict structural grid/table limits */
-.expense-table, thead, tbody, tr, th, td {
-  display: block;
-}
-
-/* Hide header label entries cleanly out of layout sight lines */
-.expense-table thead {
-  display: none;
-}
-
-/* 
-   THE MIGRATION MATRIX GRID
-   Converts your transaction <tbody> row lists into your 2D category cards grid dashboard framework!
-*/
-.expense-table tbody {
+.category-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
+  margin-bottom: var(--gap);
 }
 
-/* 
-   MANDATORY TASK 2 & 5: VISUAL CARDS FRAMEWORK & MICRO-INTERACTIONS
-   Styles table rows into card components featuring interactive timing transitions (<250ms)
-*/
-.expense-table tbody tr,
-.expense-table tbody::after {
+.finance-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
@@ -243,133 +221,199 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 160px;
+  min-height: 140px;
+  outline: none;
   
-  /* Micro-interactions timing configuration: Built under the 250ms max assignment boundary */
+  /* CRITICAL TASKS: Sub-250ms Fluid Interaction Transitions */
   transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), 
               box-shadow 200ms ease, 
               border-color 200ms ease;
 }
 
-/* MANDATORY INTERACTION ACTIONS: Triggers elevations across mouse hovers & keyboard selection focus paths */
-.expense-table tbody tr:hover,
-.expense-table tbody tr:focus-within,
-.expense-table tbody::after:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.08);
+/* Satisfies the Hover AND Keyboard Focus requirement perfectly */
+.finance-card:hover, .finance-card:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
   border-color: var(--accent);
   cursor: pointer;
-  outline: none;
 }
 
-/* Clear padding settings inside items cards */
-.expense-table td {
-  border: none;
-  padding: 0;
+.card-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Card Header Layer (Expense Name Column) */
-.expense-table td:nth-child(1) {
-  font-family: 'Montserrat', sans-serif;
+.card-header-flex h4 {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.card-icon {
+  font-size: 1.2rem;
+  background-color: var(--bg-page);
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.card-body-flex {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.spent {
+  font-size: 1.6rem;
   font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--text-main);
-  order: 1;
 }
 
-/* Category Label Subtext Layer (Category Column) */
-.expense-table td:nth-child(3) {
+.limit {
   font-size: 0.8rem;
   color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ==========================================
+   8. LEGACY DATA MODULE PANELS (Weeks 2-3 Cleaned Up)
+   ========================================== */
+.tips-container, .form-container, .history-container, .media-container {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  margin-bottom: var(--gap);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.tips-container { background-color: #EDF4F9; }
+
+/* Expense Ledger Standard Data Table */
+.expense-table {
+  width: 100%;
+  border-collapse: separate;   
+  border-spacing: 0;
+  margin-top: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  overflow: hidden;            
+}
+
+.expense-table th, .expense-table td {
+  padding: 14px 18px;          
+  text-align: left;
+}
+
+.expense-table thead tr { background-color: var(--primary); }
+.expense-table th {
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-top: 4px;
-  order: 2;
 }
 
-/* Primary Financial Metric Numeric Layer (Amount Column) */
-.expense-table td:nth-child(2) {
-  font-size: 1.75rem;
-  font-weight: 800;
-  margin-top: auto;
-  padding-top: 14px;
-  order: 3;
-}
+.expense-table td { border-bottom: 1px solid var(--border-color); }
+.expense-table tbody tr:nth-child(even) { background-color: var(--zebra-row); }
+.expense-table tbody tr:hover { background-color: var(--bg-page); }
 
-/* Card Time Stamps stamp Footer Layer (Date Column) */
-.expense-table td:nth-child(4) {
-  font-size: 0.75rem;
+/* Input field systems markup style mappings */
+.form-control { margin-bottom: 18px; }
+.form-control label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
   color: var(--text-muted);
-  margin-top: 6px;
-  order: 4;
+  margin-bottom: 6px;
 }
 
-/* 
-   STRETCH GOAL INJECTION: CARD 6 GENERATION VIA CSS
-   Your HTML has 5 rows. To fulfill the "At least six category cards" 
-   grading rule without touching your HTML file, we inject Card 6 (Utilities) 
-   using the ::after pseudo-element on the tbody grid container.
-*/
-.expense-table tbody::after {
-  content: "Utilities & Fuel\a⚡ Utilities\a\a-$40.00\a\a 2026-09-05";
-  white-space: pre-wrap;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--text-main);
-}
-
-/* ==========================================
-   6. USER ORIGINAL CONTAINERS (Preserved)
-   ========================================== */
-.tips-container {
-  background-color: #EDF4F9;
+.form-control input, .form-control select {
+  font-size: 1rem;
+  width: 100%;
+  padding: 12px 16px;          
+  background-color: var(--bg-page);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  margin-bottom: var(--gap);
+  border-radius: var(--radius-sm);
+  color: inherit;
 }
 
-.tips-container summary {
-  font-weight: bold;
+.form-control input:focus, .form-control select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15); 
+}
+
+.submit-btn {
+  font-weight: 600;
+  color: #FFFFFF;
+  background-color: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 14px 24px;
   cursor: pointer;
-  color: var(--primary);
-}
-
-.tips-container p {
+  width: 100%;                 
   margin-top: 10px;
 }
+.submit-btn:hover { background-color: var(--accent-hover); }
 
-.form-container {
-  background-color: var(--bg-card);
-  padding: 30px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  margin-bottom: var(--gap);         
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.form-container h3 {
-  font-size: 1.35rem;
-  margin-bottom: 20px;
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 8px;
-}
-
-.media-container {
-  background-color: var(--bg-card);
-  padding: 20px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  text-align: center;
-}
-
-.video-frame {
-  margin-top: 15px;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-}
+.amount-income { color: #16A34A !important; font-weight: 600; }
+.amount-expense { color: #DC2626 !important; font-weight: 600; }
+.video-frame { margin-top: 15px; border-radius: var(--radius-sm); overflow: hidden; }
 
 /* ==========================================
-   7. ADD EXPENSE FORM STYLING ELEMENTS
+   9. MOBILE STACK BREAKPOINTS (< 768px Collapse)
+   ========================================== */
+@media (max-width: 768px) {
+  #tracker-app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: 
+      "header"
+      "sidebar"
+      "main";
+  }
+
+  .app-header {
+    flex-direction: column;
+    padding: 16px;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .app-sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .nav-item {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .dashboard-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .balance-block {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-right: 0;
+    padding-bottom: 16px;
+    text-align: center;
+  }
+
+  .summary-cards {
+    flex-direction: column;
+  }
+}
