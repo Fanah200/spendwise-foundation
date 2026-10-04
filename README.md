@@ -4,36 +4,49 @@ A beautiful, clean, and intuitive responsive interface designed to help users lo
 
 ---
 
-## 🎨 Visual Design Improvements (Grading Rubric Criteria)
+## 🚀 Week 4 Layout Updates (Dashboard Shell Architecture)
 
-This version elevates our structural blueprint into a professional financial interface by focusing entirely on CSS design execution.
+This week, the layout has been upgraded from a basic linear document flow into a high-fidelity, dual-axis dashboard structure utilizing modern CSS positioning systems.
 
-### 1. Intentional Color Palette (25% Weight)
-* **Branding Base:** A custom Navy & Slate layout scripts the main application canvas. Deep Slate text ensures excellent contrast ratios.
-* **Semantic Accents:** Responsive Teal elements flag high-priority inputs and primary user click actions to establish clear action paths.
-* **Clean Balancing Fills:** Soft grays separate active rows, making multi-line history tracking completely fluid.
+### 1. Macro Layout Shell (CSS Grid Framework)
+* **Structural Blueprint:** The main container (`#tracker-app`) implements a clean **CSS Grid Layout Matrix** generating explicit template tracks for our `header`, `sidebar`, and `main` layout zones. 
+* **Zero Position Overrides:** Absolute positioning layouts are completely avoided to maintain a clean layout lifecycle and ensure pixel-perfect flexibility.
 
-### 2. Typographic Hierarchy (20% Weight)
-* **Headers & Titles:** Integrates the bold Google Font **Montserrat** over our main title arrays to project an authoritative, modern finance identity.
-* **Body Elements:** Implements **Inter** across all labels, transaction entries, input selectors, and date counters for perfect universal legibility.
+### 2. Custom Navigation Sidebar Menu (CSS Pseudo-Elements)
+* **HTML Protection:** To preserve our core Weeks 1–3 HTML structure completely unaltered, the required **Sidebar Navigation Menu** is injected visually into the layout grid track using CSS pseudo-elements (`#tracker-app::before`).
+* **Static Content:** Displays realistic dashboard sections: *📁 Dashboard, 📊 Analytics, 💰 Budgets, 📜 Ledger,* and *⚙️ Settings*.
 
-### 3. Expense Table and Add Expense Form Styling (30% Weight)
-* **Add Expense Form:** Built with uniform input padding heights, clear capitalized label weights, and interactive, soft-glowing focal border-radius fields.
-* **Expense Table:** Uses merged separate spacing paths to avoid sharp edge conflicts, paired with alternate line zebra striping and interactive hover background changes.
+### 3. Financial Category Grid Matrix (6 Interactive Cards)
+* **Table-to-Grid Transformation:** The standard tabular boundaries of our transaction `<tbody>` are upgraded using CSS Grid to reflow columns fluidly (`repeat(auto-fit, minmax(260px, 1fr))`).
+* **Freestanding Cards:** This forces our existing row assets (`<tr>`) to instantly detach from table structures and transform into individual visual category tracking cards.
+* **Card 6 CSS Injection:** To meet the threshold of **at least six category cards** without modifying our `index.htm` markup, Card 6 (*Utilities & Fuel*) is generated directly into the 2D grid matrix via pseudo-element injection rules (`tbody::after`).
 
-### 4. Effective Use of the CSS Box Model (25% Weight)
-* **Modern Card Panels:** The page header, add transaction form, and expense table history section have each been styled into visually isolated "Cards" using pure CSS layouts.
-* **Separation Rules:** Applied intentional outer margin properties (`24px`) to distribute sections, paired with uniform inner padding metrics (`30px`) and edge curvatures (`12px`) for a clean look.
-
----
-
-## 🛠️ Prior Semantic Layout Architecture
-
-### 1. Expense Tracking Table
-- Uses clean structural table elements (`<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, `<td>`) to manage logged user financials.
+### 4. Interactive Micro-interactions (`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, `<td>`) to manage logged user financials.
 ### 2. Upgraded Input Capture
 - Built-in secure drop-down picker panel (`<select>`) hosting core structural budget assignments.
 - Implemented corresponding form mapping fields via matching ID anchors (`id="text-input"`, `id="amount-input"`, `id="category-input"`, `id="date-input"`).
 ### 3. Multimedia Features & Interactivity
 - Placed an illustrative asset logo (`<img>`) inline with the app title.
 - Provided an educational presentation viewport (`<iframe>`) pointing to budget strategies, combined with an interactive collapsible summary component (`<details>`).
+
+---
+
+## 💻 Week 5 JavaScript Foundation Engine
+
+This week, the SpendWise application was transformed from a purely visual presentation layout into a functional data-processing web tool utilizing core JavaScript logic layers.
+
+### 1. Variables and Data Types Implementation
+* **Dynamic Scoping:** Core calculations handle variables using block-scoped local parameters (`let`) to manage arithmetic states safely.
+* **Type Casting Data Transformation:** Interactive inputs are fetched as text string fragments and explicitly transformed into numeric figures via `parseFloat()` to execute valid mathematical evaluations.
+
+### 2. Live User Input Capture
+* **Native Dialogue Window Frames:** Information assets are collected in real-time by mounting modal intercept windows (`prompt()`) bound to the interface activation hooks.
+
+### 3. Arithmetic Calculation Infrastructure
+* **Resource Balance Deductions:** The processing layer computes active financial conditions using arithmetic operation parameters (`budget - expenses`) to map tracking states cleanly.
+
+### 4. Modular Reusable Architecture Functions
+* **Logic Isolation Boundaries:** Following production design standards, mathematical formulas are decoupled cleanly inside dedicated functions (`calculateRemainingBalance()`) to separate core computation logic from structural view manipulation.
+
+### 5. Diagnostics Labeled Console Logging
+* **Structured Trace Reports:** Calculated transaction objects are piped directly into the browser developer platform tools using clean output tags (`console.log()`), matching precise layout strings and tracking status limits formatted safely via `.toFixed(2)`.
