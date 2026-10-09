@@ -1,62 +1,110 @@
 // ============================================================================
-// Week 5 Web Development Assignment: SpendWise JavaScript Foundation
+// Week 6 Web Development Assignment: SpendWise Interactive Engine
 // File: script.js
 // ============================================================================
 
-// 1. Reusable Functional Calculations Engine (Requirement 5)
-function calculateRemainingBalance(budget, totalExpenses) {
-    // Performs mathematical subtraction calculation arithmetic processing (Requirement 4)
-    return budget - totalExpenses;
+// 1. DATA STORAGE USING ARRAYS (Requirement 2)
+// This state layer manages multiple records chronologically instead of individual variables
+let transactions = [];
+
+// 2. PROCESS DATA WITH LOOPS & UPDATE DOM (Requirement 3 & 4)
+function calculateAndUpdateDashboard() {
+    let totalIncome = 0;
+    let totalExpenses = 0;
+
+    // LOOP LAYER: Traverses the active data collection array to process records (Requirement 3)
+    for (let i = 0; i < transactions.length; i++) {
+        let currentTransaction = transactions[i];
+        
+        if (currentTransaction.amount > 0) {
+            totalIncome += currentTransaction.amount;
+        } else {
+            totalExpenses += currentTransaction.amount; // Aggregates negative outflows
+        }
+    }
+
+    let netBalance = totalIncome + totalExpenses;
+
+    console.log("--- SpendWise Loop Calculation Report ---");
+    console.log(`Total Tracked Records:   ${transactions.length}`);
+    console.log(`Aggregated Income:       $${totalIncome.toFixed(2)}`);
+    console.log(`Aggregated Expenses:     $${Math.abs(totalExpenses).toFixed(2)}`);
+    console.log(`Calculated Net Balance:  $${netBalance.toFixed(2)}`);
+    console.log("-----------------------------------------");
+
+    // DYNAMIC DOM UPDATES: Injects variables into active interface blocks (Requirement 4)
+    if (document.getElementById("money-plus")) {
+        document.getElementById("money-plus").textContent = `+$${totalIncome.toFixed(2)}`;
+    }
+    if (document.getElementById("money-minus")) {
+        document.getElementById("money-minus").textContent = `-$${Math.abs(totalExpenses).toFixed(2)}`;
+    }
+    if (document.getElementById("current-balance")) {
+        if (netBalance >= 0) {
+            document.getElementById("current-balance").textContent = `$${netBalance.toFixed(2)}`;
+        } else {
+            document.getElementById("current-balance").textContent = `-$${Math.abs(netBalance).toFixed(2)}`;
+        }
+    }
 }
 
-// 2. Application Logic Framework Flow Engine Manager
+// 3. APPLICATION LOGIC FRAMEWORK FLOW ENGINE MANAGER (Requirement 6)
 function runSpendWiseEngine() {
-    console.log("--- SpendWise Foundation Analysis Initialized ---");
-
-    // 3. Collect User Inputs via interactive Prompts (Requirement 2 & 3)
-    let rawBudgetInput = prompt("Enter your Starting Budget allocation number (e.g. 2000):");
-    let startingBudget = parseFloat(rawBudgetInput); // Data type transformation conversion string to float
-
-    let rawExpenseInput = prompt("Enter your Total Accumulated Outflow Expenses (e.g. 620):");
-    let totalExpenses = parseFloat(rawExpenseInput);
-
-    // 4. Input Validation checks to ensure calculations execution safety
-    if (isNaN(startingBudget) || isNaN(totalExpenses)) {
-        console.error("[SYSTEM ERROR]: Processing terminated due to non-numeric entries.");
-        alert("Execution failed. Please refresh and input valid numerical values.");
+    
+    // Collect parameters via interactive prompt frame dialogues
+    let nameInput = prompt("Enter transaction description label (e.g. Freelance, Coffee):");
+    if (nameInput === null || nameInput.trim() === "") {
+        alert("Action aborted. A valid transaction description is required.");
         return;
     }
 
-    // 5. Compute Remaining Balances via functional layers (Requirement 4)
-    let remainingBalance = calculateRemainingBalance(startingBudget, totalExpenses);
+    let rawAmountInput = prompt("Enter amount (Positive numbers for Income, Negative signs for Outflow Expenses like -25):");
+    let parsedAmount = parseFloat(rawAmountInput); // Data type transformation string to float
 
-    // 6. Display Clearly Labeled Structured Structural Results to Browser Console (Requirement 6)
-    console.log(`Starting Budget Input:     $${startingBudget.toFixed(2)}`);
-    console.log(`Total Tracked Expenses:    $${totalExpenses.toFixed(2)}`);
-    console.log("-------------------------------------------------");
-    console.log(`Calculated Net Balance:    $${remainingBalance.toFixed(2)}`);
+    // 4. DECISION MAKING VIA CONDITIONALS (Requirement 1)
+    if (!isNaN(parsedAmount) && parsedAmount !== 0) {
+        
+        let categoryInput = prompt("Enter a category label (e.g. Salary/Income, Groceries, Rent, Transport):");
+        if (categoryInput === null || categoryInput.trim() === "") {
+            categoryInput = "Other";
+        }
 
-    // Budget Status Logic Threshold Evaluation Indicators
-    if (remainingBalance < 0) {
-        console.log("ALERT STATUS: Current expenses cross active capital thresholds! Deficit.");
+        // Structure a multi-attribute data record item object
+        let newRecord = {
+            name: nameInput.trim(),
+            amount: parsedAmount,
+            category: categoryInput.trim(),
+            date: new Date().toISOString().split('T')[0] // Generates automated YYYY-MM-DD string
+        };
+
+        // Append the record item into our global memory array collection
+        transactions.push(newRecord);
+
+        // Run the dynamic evaluation computational loop pipeline
+        calculateAndUpdateDashboard();
+
+        // 5. INJECT DYNAMIC TRANSCRIPT ROW TO HISTORICAL LEDGER TABLE
+        const historyTableBody = document.getElementById("transaction-history");
+        if (historyTableBody) {
+            let newRow = document.createElement("tr");
+            
+            let amountClass = newRecord.amount > 0 ? "amount-income" : "amount-expense";
+            let amountSign = newRecord.amount > 0 ? "+" : "-";
+            
+            newRow.innerHTML = `
+                <td>${newRecord.name}</td>
+                <td class="${amountClass}">${amountSign}$${Math.abs(newRecord.amount).toFixed(2)}</td>
+                <td>${newRecord.category}</td>
+                <td>${newRecord.date}</td>
+            `;
+            
+            historyTableBody.appendChild(newRow);
+        }
+
     } else {
-        console.log("STATUS OVERVIEW: Accounts stable. Capital surplus effectively maintained.");
+        alert("[INPUT VALIDATION ERROR]: Please enter a true non-zero numeric amount value.");
     }
-    console.log("--- End of Diagnostics Log Framework Stream ---");
-
-    // 7. Dynamic UI View Modification Injections (Updates your HTML cards live!)
-    if (document.getElementById("current-balance")) {
-        document.getElementById("current-balance").innerText = `$${remainingBalance.toFixed(2)}`;
-    }
-    if (document.getElementById("money-minus")) {
-        document.getElementById("money-minus").innerText = `-$${totalExpenses.toFixed(2)}`;
-    }
-    if (document.getElementById("money-plus")) {
-        document.getElementById("money-plus").innerText = `+$${startingBudget.toFixed(2)}`;
-    }
-
-    alert("Analysis Complete! Open your Browser Developer Tools Console (F12) to examine labeled report logs.");
 }
 
-// 8. Bind interactive execution listener hook to your new button selector frame
+// 6. BIND INTERACTIVE EXECUTION LISTENER HOOK TO THE ELEMENT FRAME (Requirement 5)
 document.getElementById("btn-calculate").addEventListener("click", runSpendWiseEngine);

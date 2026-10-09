@@ -138,7 +138,7 @@
 
             </section>
 
-            <!-- PART 3: EXPENSE TABLE LEDGER CARD (Left Intact from Week 3) -->
+            <!-- PART 3: EXPENSE TABLE LEDGER CARD -->
             <section class="history-container">
                 <h3>Your Expenses History</h3>
                 <table class="expense-table">
@@ -150,7 +150,7 @@
                             <th>Date</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="transaction-history">
                         <tr>
                             <td>Freelance Design</td>
                             <td class="amount-income">+$400.00</td>
@@ -185,50 +185,24 @@
                 </table>
             </section>
 
-            <!-- PART 2: THE ADD EXPENSE FORM CARD (Left Intact from Week 2) -->
+            <!-- PART 2: THE ADD EXPENSE FORM CARD (Fixed and Completed) -->
             <section class="form-container">
-                <h3>Add New Transaction</h3>
-                <form id="transaction-form">
-                    
+                <h3>Calculate Assignment Metrics</h3>
+                <form id="transaction-form" onsubmit="return false;">
                     <div class="form-control">
-                        <label for="text-input">Expense Name</label>
-                        <input type="text" id="text-input" placeholder="e.g., Grocery Shopping" required />
+                        <label for="text-input">Status Diagnostics Check</label>
+                        <p style="font-size: 14px; margin-bottom: 15px; color: #666;">Click the launch action button to test variables, perform calculations, and stream data directly into your browser logs console window.</p>
                     </div>
-                    
-                    <div class="form-control">
-                        <label for="amount-input">Amount</label>
-                        <input type="number" step="0.01" id="amount-input" placeholder="e.g., -20.00" required />
-                    </div>
-
-                    <div class="form-control">
-                        <label for="category-input">Category</label>
-                        <select id="category-input" required>
-                            <option value="">-- Select a Category --</option>
-                            <option value="groceries">Groceries</option>
-                            <option value="utilities">Utilities</option>
-                            <option value="entertainment">Entertainment</option>
-                            <option value="salary">Salary/Income</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-
-                    <div class="form-control">
-                        <label for="date-input">Date</label>
-                        <input type="date" id="date-input" required />
-                    </div>
-
-                    <button type="button" class="submit-btn" id="add-btn">Add Transaction</button>
+                    <!-- INTERACTIVE ENGAGEMENT CALL HOOK BUTTON -->
+                    <button type="button" id="btn-calculate" style="background-color: #2b6cb0; color: white; padding: 10px 20px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">
+                        Launch Budget Prompts
+                    </button>
                 </form>
             </section>
+        </main>
+    </div>
 
-            <!-- FINANCIAL SPOTLIGHT CARD -->
-            <section class="media-container">
-                <h3>Financial Literacy Spotlight</h3>
-                <div class="video-frame">
-                    <iframe 
-                        width="100%" 
-                        height="315" 
-                        src="https://youtube.com" 
-                        title="5 Budgeting Tips for Beginners" 
-                        frameborder="0"
-                        allowfullscreen>
+    <!-- THIS LINKS YOUR SCRIPT CORE ENGINE HOOK -->
+    <script src="script.js"></script>
+</body>
+</html>
